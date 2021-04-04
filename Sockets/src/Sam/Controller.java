@@ -5,15 +5,17 @@
  */
 package Sam;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Sam
  */
 public class Controller {
     User me;
-    
+    ArrayList<Message> messages;
     public Controller (User user){
-        me = user;
+        me = user; 
     }
     /**
      * This makes a message with the local users name, and the string of the message

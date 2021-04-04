@@ -23,7 +23,7 @@ public class Message {
     * @param user the name of the user who made the message
     * @param message the string of the message
     */
-    public Message(String user, String message){
+    public Message(String user, String message) {
             SimpleDateFormat t = new SimpleDateFormat();
             t.applyPattern(Settings.shortDateFormat);
             timeStamp = t.format(new Date());
