@@ -25,4 +25,15 @@ public class Controller {
     public Message makeMessage(String message){
         return new Message(me.getName(),message);
     }
+    public void sendMessage (Message message){
+        
+    }
+    public boolean verifyIP(String IPaddress) {
+    	
+    	
+    	return true;
+    }
+    public void makeConnection(String IPaddress) {
+    	
+    }
 }

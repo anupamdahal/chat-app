@@ -1,5 +1,13 @@
 package GUI;
 
+/**
+ * 
+ MaskFormatter mf = new MaskFormatter("(###)-###-####");
+ mf.setPlaceholderCharacter(' ');
+ phoneNumberInput = new javax.swing.JFormattedTextField(mf);
+ */
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -47,7 +55,7 @@ class Menu extends JFrame
       //when user clicks button
       loginButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) { 
-
+        	 
         	 Chatbox chatbox=new Chatbox();
         	 chatbox.setVisible(true);
         	 setVisible(false);
