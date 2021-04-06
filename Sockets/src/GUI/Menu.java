@@ -7,88 +7,47 @@ import javax.swing.event.*;
 
 class Menu extends JFrame
 {
-JPanel panel;
-JTextField jtxtfield;
-JTextArea jtxtarea;
-JLabel label1;
-boolean typing;
-Timer timer;
-Font font1;
-JButton button;
-JLabel headerLabel;
-JLabel statusLabel;
+
   public Menu()
   {
       menuGUI();
   }
   
   private void menuGUI()
-  {
-      
-//      // Set frame properties
-//  	  font1= new Font("Century Gothic", Font.LAYOUT_LEFT_TO_RIGHT, 40);
-//      setTitle("Menu");        
-//      
-//      setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
-//      // Create a JPanel and set layout
-//      jpanel=new JPanel();
-//
-//     
-////      label1=new JLabel();
-////      label1.setFont(font1);
-////      jpanel.add(label1);
-////      
-//      
-//     
-//      jtxtfield=new JTextField();
-//      jtxtfield.setFont(font1);
-//      jtxtfield.setBounds(100,100,100,100);
-//      jpanel.add(jtxtfield);
-//      //jtxtfield.setBackground(Color);
-//      
-//      
-//      
-//    
-//      
-//  
-//      jpanel.setBackground(Color.BLACK);
-//      jpanel.setPreferredSize(new Dimension(70,500));
-//      add(jpanel);
-//      setSize(500,500);
-//      setLocationRelativeTo(null);
-//      setVisible(true);
+  {	
 
+	  JPanel panel;
+	  JTextField textField;
+	  JButton button;
+	  JLabel headerLabel;
+	  String ipAddress;
 	  
+	  //frame properties
+	  setLocationRelativeTo(null);
+      setVisible(true);  
       setSize(400,400);
+      setTitle("Menu");
       setLayout(new GridLayout(3, 1));
-      
-      addWindowListener(new WindowAdapter() {
-         public void windowClosing(WindowEvent windowEvent){
-            System.exit(0);
-         }        
-      });    
-      headerLabel = new JLabel("", JLabel.CENTER);        
-      statusLabel = new JLabel("",JLabel.CENTER);    
-      statusLabel.setSize(350,100);
+      setVisible(true); 
+      setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+      //panel
       panel = new JPanel();
       panel.setLayout(new FlowLayout());
-
-      add(headerLabel);
-      add(panel);
-      add(statusLabel);
-      setVisible(true);  
-   
-      headerLabel.setText("Enter IP Address"); 
-
-      //JLabel  namelabel= new JLabel("", JLabel.RIGHT);
-     
-      final JTextField userText = new JTextField(10);
-           
-
+      
+      //label
+      headerLabel = new JLabel("Enter IP Address", JLabel.CENTER);      
+      
+      //textfield
+      textField = new JTextField(10);           
+      ipAddress= textField.getText();
+      //button
       JButton loginButton = new JButton("OK");
+      
+      //when user clicks button
       loginButton.addActionListener(new ActionListener() {
-         public void actionPerformed(ActionEvent e) {  
+         public void actionPerformed(ActionEvent e) { 
+
         	 Chatbox chatbox=new Chatbox();
         	 chatbox.setVisible(true);
         	 setVisible(false);
@@ -96,11 +55,15 @@ JLabel statusLabel;
          }
       }); 
       
-      panel.add(userText);
-      
+      //add textfield and button to panel
+      panel.add(textField);      
       panel.add(loginButton);
-      setLocationRelativeTo(null);
-      setVisible(true);  
+      
+      //add label and panel to frame
+      add(headerLabel);
+      add(panel);
+      
+      
   }
   
   
