@@ -32,4 +32,14 @@ public class Message {
             this.message = message;
     }
     
+    public String getUser(){
+        return user;
+    }
+    public String getMessage(){
+        return message;
+    }
+    public String getTimeStamp(){
+        return timeStamp;
+    }
+    
 }

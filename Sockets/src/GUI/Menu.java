@@ -1,17 +1,10 @@
 package GUI;
 
-/**
- * 
- MaskFormatter mf = new MaskFormatter("(###)-###-####");
- mf.setPlaceholderCharacter(' ');
- phoneNumberInput = new javax.swing.JFormattedTextField(mf);
- */
-
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.event.*;
+import javax.swing.text.MaskFormatter;
 
 class Menu extends JFrame
 {
@@ -25,7 +18,7 @@ class Menu extends JFrame
   {	
 
 	  JPanel panel;
-	  JTextField textField;
+	  JTextField ipField;
 	  JButton button;
 	  JLabel headerLabel;
 	  String ipAddress;
@@ -46,9 +39,20 @@ class Menu extends JFrame
       //label
       headerLabel = new JLabel("Enter IP Address", JLabel.CENTER);      
       
-      //textfield
-      textField = new JTextField(10);           
-      ipAddress= textField.getText();
+      //ipField
+      MaskFormatter mf; 
+      try {
+  		mf = new MaskFormatter("###.###.###.###"); 
+  		mf.setPlaceholderCharacter('0');
+  		ipField = new javax.swing.JFormattedTextField(mf);
+  	} catch (Exception e1) {  
+  		// TODO Auto-generated catch block
+  		e1.printStackTrace();
+  		 ipField = new JTextField(10);         
+  	}
+       
+       
+      ipAddress= ipField.getText();
       //button
       JButton loginButton = new JButton("OK");
       
@@ -56,6 +60,8 @@ class Menu extends JFrame
       loginButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) { 
         	 
+        	 int port = 8080;
+                 
         	 Chatbox chatbox=new Chatbox();
         	 chatbox.setVisible(true);
         	 setVisible(false);
@@ -64,7 +70,7 @@ class Menu extends JFrame
       }); 
       
       //add textfield and button to panel
-      panel.add(textField);      
+      panel.add(ipField);      
       panel.add(loginButton);
       
       //add label and panel to frame
