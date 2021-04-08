@@ -55,4 +55,9 @@ public class ChatClient {
 		ChatClient client = new ChatClient(hostname, port);
 		client.execute();
 	}
+        public static void run(String hName,int p){
+            
+		ChatClient client = new ChatClient(hName, p);
+		client.execute();
+        }
 }

@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.event.*;
 import javax.swing.text.MaskFormatter;
+import net.codejava.networking.chat.client.ChatClient;
 import net.codejava.networking.chat.server.ChatServer;
 
 class Menu extends JFrame
@@ -63,7 +64,7 @@ class Menu extends JFrame
          public void actionPerformed(ActionEvent e) { 
         	 
         	 int port = 8080;
-                 
+                 ChatClient.run(ipAddress,port);   
         	 Chatbox chatbox=new Chatbox();
         	 chatbox.setVisible(true);
         	 setVisible(false);
