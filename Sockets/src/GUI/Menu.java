@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.event.*;
 import javax.swing.text.MaskFormatter;
+import net.codejava.networking.chat.server.ChatServer;
 
 class Menu extends JFrame
 {
@@ -56,6 +57,7 @@ class Menu extends JFrame
       //button
       JButton loginButton = new JButton("OK");
       
+     
       //when user clicks button
       loginButton.addActionListener(new ActionListener() {
          public void actionPerformed(ActionEvent e) { 
@@ -69,10 +71,25 @@ class Menu extends JFrame
          }
       }); 
       
+      JButton hostButton = new JButton("Host");
+      hostButton.addActionListener(new ActionListener() {
+         public void actionPerformed(ActionEvent e) { 
+        	 
+        	 int port = 8080;
+                 
+        	 Chatbox chatbox=new Chatbox();
+        	 chatbox.setVisible(true);
+        	 setVisible(false);
+                 ChatServer.run(port);  
+                 
+         }
+      }); 
+      
+      
       //add textfield and button to panel
       panel.add(ipField);      
       panel.add(loginButton);
-      
+      panel.add(hostButton);
       //add label and panel to frame
       add(headerLabel);
       add(panel);
