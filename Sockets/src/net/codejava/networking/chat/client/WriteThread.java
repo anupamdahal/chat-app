@@ -2,6 +2,8 @@ package net.codejava.networking.chat.client;
 
 import java.io.*;
 import java.net.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This thread is responsible for reading user's input and send it
@@ -31,15 +33,30 @@ public class WriteThread extends Thread {
 	public void run() {
 
 		Console console = System.console();
-
-		String userName = console.readLine("\nEnter your name: ");
+                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+  
+                // Reading data using readLine
+                System.out.print("\nEnter your name");
+                String userName="";
+                try { 
+                    userName = reader.readLine();
+                } catch (IOException ex) {
+                    Logger.getLogger(WriteThread.class.getName()).log(Level.SEVERE, null, ex);
+                }
+		
 		client.setUserName(userName);
 		writer.println(userName);
 
 		String text;
 
 		do {
-			text = console.readLine("[" + userName + "]: ");
+			System.out.print("[" + userName + "]: ");
+                        text ="";
+                    try { 
+                        text = reader.readLine();
+                    } catch (IOException ex) {
+                        Logger.getLogger(WriteThread.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 			writer.println(text);
 
 		} while (!text.equals("bye"));

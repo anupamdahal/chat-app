@@ -49,7 +49,7 @@ public class ChatClient {
 
 	public static void main(String[] args) {
         System.out.println("LALA");
-		String hostname = "146.229.255.21";
+		String hostname = "192.168.1.16";
 		int port = 8080;
 
 		ChatClient client = new ChatClient(hostname, port);
