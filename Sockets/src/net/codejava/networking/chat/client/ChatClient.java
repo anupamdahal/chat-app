@@ -20,7 +20,7 @@ public class ChatClient {
 		this.port = port;
 	}
 
-	public int execute() {
+	public void execute() {
 		try {
 			Socket socket = new Socket(hostname, port);
 
@@ -29,13 +29,13 @@ public class ChatClient {
 			new ReadThread(socket, this).start();
 			writeThread = new WriteThread(socket, this);
                         writeThread.start();
-                         return 0;
+                         
 		} catch (UnknownHostException ex) {
 			System.out.println("Server not found: " + ex.getMessage());
-                        return 1;
+                
 		} catch (IOException ex) {
 			System.out.println("I/O Error: " + ex.getMessage());
-                        return 2;
+
 		}
 
 	}
@@ -49,21 +49,30 @@ public class ChatClient {
 	}
 
 
-	public static void main(String[] args) {
-        System.out.println("LALA");
-		String hostname = "192.168.1.16";
-		int port = 8080;
-
-		ChatClient client = new ChatClient(hostname, port);
-		client.execute();
-	}
         
         public static void run(String hName,int p){
-            
+                System.out.println("LALA");
 		ChatClient client = new ChatClient(hName, p);
 		client.execute();
         }
         public WriteThread getWriteThread (){
             return writeThread;
         }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+	public static void main(String[] args) {
+                System.out.println("LALA");
+		String hostname = "192.168.1.16";
+		int port = 8080;
+
+		ChatClient client = new ChatClient(hostname, port);
+		client.execute();
+	}
 }

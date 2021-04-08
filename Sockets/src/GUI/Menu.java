@@ -67,7 +67,8 @@ class Menu extends JFrame
          public void actionPerformed(ActionEvent e) { 
         	 
         	 int port = 8080;
-                 ChatClient.run(ipAddress,port);   
+                 
+                 ChatClient.run("192.168.1.16",port);   
         	 Chatbox chatbox=new Chatbox();
         	 chatbox.setVisible(true);
         	 setVisible(false);

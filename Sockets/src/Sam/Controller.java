@@ -16,8 +16,8 @@ import net.codejava.networking.chat.client.ChatClient;
 public class Controller {
     private static Controller me = new Controller();
     static ChatClient client;
-    ArrayList<Message> messages = new ArrayList<>();
-    private Controller (){
+    static ArrayList<Message> messages = new ArrayList<>();
+    private Controller () {
     	String hostname = "localhost";
 		int port = 8080;
 
@@ -53,6 +53,7 @@ public class Controller {
     public void sendMessage (String text){
         client.getWriteThread().sendMessage(text);
     }
+    
     public  ArrayList<Message> getMessages(){
         return messages;
     }
