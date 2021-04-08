@@ -92,9 +92,9 @@ class Chatbox extends JFrame {
                 }
             }
         });
+        newMessageLoop.start();
 
-        
-
+       
         // Add a KeyListener
         textField.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent ke) {
