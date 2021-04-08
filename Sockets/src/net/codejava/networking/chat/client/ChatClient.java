@@ -12,7 +12,7 @@ import java.io.*;
 public class ChatClient {
 	private String hostname;
 	private int port;
-        
+        private WriteThread writeThread;
 	private String userName;
 
 	public ChatClient(String hostname, int port) {
@@ -27,7 +27,8 @@ public class ChatClient {
 			System.out.println("Connected to the chat server");
 
 			new ReadThread(socket, this).start();
-			new WriteThread(socket, this).start();
+			writeThread = new WriteThread(socket, this);
+                        writeThread.start();
                          return 0;
 		} catch (UnknownHostException ex) {
 			System.out.println("Server not found: " + ex.getMessage());
@@ -56,9 +57,13 @@ public class ChatClient {
 		ChatClient client = new ChatClient(hostname, port);
 		client.execute();
 	}
+        
         public static void run(String hName,int p){
             
 		ChatClient client = new ChatClient(hName, p);
 		client.execute();
+        }
+        public WriteThread getWriteThread (){
+            return writeThread;
         }
 }

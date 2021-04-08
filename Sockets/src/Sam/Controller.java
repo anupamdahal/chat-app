@@ -47,6 +47,12 @@ public class Controller {
         messages.add(message);
         
     }
+     
+     
+     
+    public void sendMessage (String text){
+        client.getWriteThread().sendMessage(text);
+    }
     public  ArrayList<Message> getMessages(){
         return messages;
     }

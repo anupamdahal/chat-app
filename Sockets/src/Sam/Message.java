@@ -41,5 +41,21 @@ public class Message {
     public String getTimeStamp(){
         return timeStamp;
     }
-    
+    /**
+     * 
+     * @return 
+     */
+    public String getString(){
+        StringBuilder sb = new StringBuilder();
+        sb
+                .append(user)
+                .append(" ")
+                .append(timeStamp)
+                .append("\t")
+                .append(message)
+                
+                ;
+        
+        return "";
+    }
 }
