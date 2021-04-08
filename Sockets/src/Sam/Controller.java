@@ -14,9 +14,9 @@ import net.codejava.networking.chat.client.ChatClient;
  * @author Sam
  */
 public class Controller {
-	Controller me = new Controller();
-    User user;
-    ChatClient client;
+    private static Controller me = new Controller();
+    static ChatClient client;
+    ArrayList<Message> messages = new ArrayList<>();
     private Controller (){
     	String hostname = "localhost";
 		int port = 8080;
@@ -24,20 +24,33 @@ public class Controller {
 		ChatClient client = new ChatClient(hostname, port);
 		client.execute();
     }
-    public Controller getInstance (String IP,int p) { 
+    public static Controller getInstance (String IP,int p) { 
     	client = new ChatClient(IP,p);
         client.execute();
+    	return me;
+    }
+    public static Controller getInstance () { 
+    	
     	return me;
     }
     /**
      * This makes a message with the local users name, and the string of the message
      * @param message the string of what the message is
-     * @return this will return a copy of the message object
+     * 
      */
     
-    public void sendMessage (Message message){
+    public void addMessage(String message){
+        Message m = new Message(client.getUserName(),message); 
+        messages.add(m);
+    }
+     public void addMessage(Message message){
+        messages.add(message);
         
     }
+    public  ArrayList<Message> getMessages(){
+        return messages;
+    }
+    
     
     public void start(String IPaddress,int port) {
     	

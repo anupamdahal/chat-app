@@ -10,7 +10,10 @@ import net.codejava.networking.chat.server.ChatServer;
 
 class Menu extends JFrame
 {
-
+  private String userName = "";
+  
+  
+  
   public Menu()
   {
       menuGUI();
@@ -82,6 +85,7 @@ class Menu extends JFrame
         	 chatbox.setVisible(true);
         	 setVisible(false);
                  ChatServer.run(port);  
+                 ChatClient.run("localhost",port);   
                  
          }
       }); 

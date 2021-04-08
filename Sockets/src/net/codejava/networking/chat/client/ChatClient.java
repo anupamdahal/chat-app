@@ -12,6 +12,7 @@ import java.io.*;
 public class ChatClient {
 	private String hostname;
 	private int port;
+        
 	private String userName;
 
 	public ChatClient(String hostname, int port) {
@@ -38,12 +39,12 @@ public class ChatClient {
 
 	}
 
-	void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserName(String userName) {
+		this.userName = userName; 
 	}
 
-	String getUserName() {
-		return this.userName;
+	public String getUserName() {
+		return this.userName; 
 	}
 
 

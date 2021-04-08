@@ -1,5 +1,6 @@
 package net.codejava.networking.chat.client;
 
+import Sam.Controller;
 import Sam.Message;
 import java.io.*;
 import java.net.*;
@@ -16,9 +17,7 @@ public class ReadThread extends Thread {
 	private BufferedReader reader;
 	private Socket socket;
 	private ChatClient client;
-        private ArrayList<Message> messages;
 	public ReadThread(Socket socket, ChatClient client) {
-            messages = new ArrayList<>();
 		this.socket = socket;
 		this.client = client;
 
@@ -41,7 +40,7 @@ public class ReadThread extends Thread {
 				if (client.getUserName() != null) {
 					System.out.print("[" + client.getUserName() + "]: ");
                                         Message m = new Message(client.getUserName(),response);
-                                        messages.add(m);
+                                        Controller.getInstance().addMessage(m);
                                        
 				}
 			} catch (IOException ex) {
@@ -52,10 +51,4 @@ public class ReadThread extends Thread {
 		}
 	}
         
-        /**
-         * This is a destructive read of the message list
-         */
-        public ArrayList<Message> getMessages(){
-            return messages;
-        }
 }
