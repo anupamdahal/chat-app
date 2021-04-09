@@ -86,7 +86,7 @@ class Menu extends JFrame
         	 chatbox.setVisible(true);
         	 setVisible(false);
                  ChatServer.run(port);  
-                 ChatClient.run("localhost",port);   
+                 ChatClient.run("localhost",port);
                  
          }
       }); 

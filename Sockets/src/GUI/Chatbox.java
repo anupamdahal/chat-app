@@ -111,9 +111,10 @@ class Chatbox extends JFrame {
 
                 // If he presses enter, add text to chat textArea
                 if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
-                    showLabel(textField.getText(), textArea, textField, typingLabel);
+                    String typed_message=textField.getText();
+                    showLabel(typed_message, textArea, textField, typingLabel);
                     
-                    Controller.getInstance().sendMessage(textField.getText());
+                    Controller.getInstance().sendMessage(typed_message);
                 }
             }
 

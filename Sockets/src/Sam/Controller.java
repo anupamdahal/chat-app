@@ -14,10 +14,13 @@ import net.codejava.networking.chat.client.ChatClient;
  * @author Sam
  */
 public class Controller {
-    private static Controller me = new Controller();
+    private static Controller me;
     static ChatClient client;
     static ArrayList<Message> messages = new ArrayList<>();
-    private Controller () {
+    private Controller (String IP,int p) {
+        
+    	client = new ChatClient(IP,p);
+        client.execute();
     	String hostname = "localhost";
 		int port = 8080;
 
@@ -25,12 +28,15 @@ public class Controller {
 		client.execute();
     }
     public static Controller getInstance (String IP,int p) { 
-    	client = new ChatClient(IP,p);
-        client.execute();
+        if(me == null){
+            me = new Controller(IP, p);
+        }
     	return me;
     }
     public static Controller getInstance () { 
-    	
+    	if(me == null){
+            me = new Controller("localhost", 8080);
+        }
     	return me;
     }
     /**
