@@ -1,4 +1,5 @@
 package net.codejava.networking.chat.client;
+import Controller.Controller;
 import java.io.*;
 import java.net.*;
 
@@ -31,11 +32,13 @@ public class ReadThread extends Thread {
 		while (true) {
 			try {
 				String response = reader.readLine();
-				System.out.println("\n" + response);
+				//System.out.println("\n" + response);
 
 				// prints the username after displaying the server's message
 				if (client.getUserName() != null) {
-					System.out.print("[" + client.getUserName() + "]: ");
+                                    String recivedMessage = "[" + client.getUserName() + "]: " + response;
+                                    System.out.print(recivedMessage);
+                                    Controller.get().addMessage(recivedMessage );
 				}
 			} catch (IOException ex) {
 				System.out.println("Error reading from server: " + ex.getMessage());

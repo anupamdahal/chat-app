@@ -9,10 +9,13 @@ import java.io.*;
  * @author www.codejava.net
  */
 public class ChatClient {
-	private String hostname;
+	
+        private String hostname;
 	private int port;
 	private String userName;
-
+        static private ChatClient client;
+        
+        
 	public ChatClient(String hostname, int port) {
 		this.hostname = hostname;
 		this.port = port;
@@ -50,7 +53,7 @@ public class ChatClient {
 		String hostname = "192.168.1.16";
 		int port = 8080;
 
-		ChatClient client = new ChatClient(hostname, port);
+		client = new ChatClient(hostname, port);
 		client.execute();
 	}
 }

@@ -1,7 +1,6 @@
 package GUI;
 
-import Sam.Controller;
-import Sam.Message;
+import Controller.Controller;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -77,7 +76,10 @@ class Chatbox extends JFrame {
         
         newMessageLoop = new Timer(1, new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                //init newMessages Array with any new messages that may have come through since last checking
+               for(String newMessage:Controller.get().getMessages()){
+                   
+                    showLabel(newMessage, textArea, textField, typingLabel);
+               }
                 
               
                         
