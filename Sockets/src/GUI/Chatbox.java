@@ -78,18 +78,13 @@ class Chatbox extends JFrame {
         newMessageLoop = new Timer(1, new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 //init newMessages Array with any new messages that may have come through since last checking
-                ArrayList<Message> newMessages = Controller.getInstance().getMessages();
-                //if there are any loop through the list and print them
-                if (!newMessages.isEmpty()) {
-                    for (Message message : newMessages) {
-                        //print messages
-                        String line = message.getString();
-                        //add new line to message bank
+                
+              
                         
-                        showLabel(line, textArea, textField, typingLabel);
+                        
                     
-                    }
-                }
+                    
+                
             }
         });
         newMessageLoop.start();
@@ -114,7 +109,6 @@ class Chatbox extends JFrame {
                     String typed_message=textField.getText();
                     showLabel(typed_message, textArea, textField, typingLabel);
                     
-                    Controller.getInstance().sendMessage(typed_message);
                 }
             }
 
