@@ -1,5 +1,6 @@
 package GUI;
 
+import Controller.Controller;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -72,7 +73,7 @@ class Menu extends JFrame
         	 Chatbox chatbox=new Chatbox();
         	 chatbox.setVisible(true);
         	 setVisible(false);
-                 
+                 Controller.get().connect("192.168.1.16",port);
          }
       }); 
       

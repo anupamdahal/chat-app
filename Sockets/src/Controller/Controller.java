@@ -6,6 +6,7 @@
 package Controller;
 
 import java.util.ArrayList;
+import net.codejava.networking.chat.client.ChatClient;
 
 /**
  *
@@ -35,5 +36,9 @@ public class Controller {
     }
     public void addMessage(String m){
         recivedMessages.add(m);
+    }
+    
+    public void connect(String ip,int port){
+        ChatClient.run(ip, port);
     }
 }
