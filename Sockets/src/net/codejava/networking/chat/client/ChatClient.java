@@ -16,12 +16,13 @@ public class ChatClient {
 	private String userName;
 
 	public ChatClient(String hostname, int port) {
-            userName = "gfbuhsj";
-		this.hostname = hostname;
-		this.port = port;
+            userName = "ufsahiufaseh";
+            this.hostname = hostname;
+            this.port = port;
+            execute();
 	}
 
-	public void execute() {
+	private void execute() {
 		try {
 			Socket socket = new Socket(hostname, port);
 
@@ -35,6 +36,7 @@ public class ChatClient {
 			System.out.println("Server not found: " + ex.getMessage());
                 
 		} catch (IOException ex) {
+                    
 			System.out.println("I/O Error: " + ex.getMessage());
 
 		}

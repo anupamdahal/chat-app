@@ -17,15 +17,13 @@ public class Controller {
     private static Controller me;
     static ChatClient client;
     static ArrayList<Message> messages = new ArrayList<>();
+    
     private Controller (String IP,int p) {
-        
-    	client = new ChatClient(IP,p);
-        client.execute();
-    	String hostname = "localhost";
-		int port = 8080;
+        String hostname = "localhost";
+        int port = 8080;
 
-		ChatClient client = new ChatClient(hostname, port);
-		client.execute();
+    	client = new ChatClient(hostname,port);
+    	
     }
     public static Controller getInstance (String IP,int p) { 
         if(me == null){
@@ -57,6 +55,7 @@ public class Controller {
      
      
     public void sendMessage (String text){
+        
         client.getWriteThread().sendMessage(text);
     }
     
@@ -65,9 +64,10 @@ public class Controller {
     }
     
     
-    public void start(String IPaddress,int port) {
-    	
-    	ChatClient client = new ChatClient(IPaddress, port);
-    	client.execute();
+    public ChatClient start(String IPaddress,int port) {
+    	if(client == null)
+            client = new ChatClient(IPaddress, port);
+        return client;
+
     }
 }
