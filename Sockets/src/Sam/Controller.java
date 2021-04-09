@@ -55,7 +55,13 @@ public class Controller {
      
      
     public void sendMessage (String text){
-        
+        if(client == null){
+            System.out.println("Client is null");
+        }
+        if(client.getWriteThread() == null){
+            
+            System.out.println("writter is null");
+        }
         client.getWriteThread().sendMessage(text);
     }
     

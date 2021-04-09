@@ -40,7 +40,7 @@ public class ReadThread extends Thread {
 				if (client.getUserName() != null) {
 					System.out.print("[" + client.getUserName() + "]: ");
                                         Message m = new Message(client.getUserName(),response);
-                                        Controller.getInstance().addMessage(m);
+                                        //Controller.getInstance().addMessage(m);
                                        
 				}
 			} catch (IOException ex) {

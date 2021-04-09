@@ -68,12 +68,12 @@ public class WriteThread extends Thread {
     public void sendMessage(String text) {
         writer.println(text);
         Controller.getInstance().addMessage(text); 
-/*        try {
+        try {
             socket.close();
         } catch (IOException ex) {
             
             System.out.println("Error writing to server: " + ex.getMessage());
 
-        } */
+        } 
     }
 }

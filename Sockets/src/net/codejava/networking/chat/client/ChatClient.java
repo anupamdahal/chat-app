@@ -16,7 +16,7 @@ public class ChatClient {
 	private String userName;
 
 	public ChatClient(String hostname, int port) {
-            userName = "ufsahiufaseh";
+            userName = "aaaaaaa";
             this.hostname = hostname;
             this.port = port;
             execute();
