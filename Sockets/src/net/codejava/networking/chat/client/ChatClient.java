@@ -1,5 +1,4 @@
 package net.codejava.networking.chat.client;
-
 import java.net.*;
 import java.io.*;
 
@@ -12,66 +11,42 @@ import java.io.*;
 public class ChatClient {
 	private String hostname;
 	private int port;
-        private WriteThread writeThread;
 	private String userName;
 
 	public ChatClient(String hostname, int port) {
-            userName = "aaaaaaa";
-            this.hostname = hostname;
-            this.port = port;
-            execute();
+		this.hostname = hostname;
+		this.port = port;
 	}
 
-	private void execute() {
+	public void execute() {
 		try {
 			Socket socket = new Socket(hostname, port);
 
 			System.out.println("Connected to the chat server");
 
 			new ReadThread(socket, this).start();
-			writeThread = new WriteThread(socket, this);
-                        writeThread.start();
-                         
+			new WriteThread(socket, this).start();
+
 		} catch (UnknownHostException ex) {
 			System.out.println("Server not found: " + ex.getMessage());
-                
 		} catch (IOException ex) {
-                    
 			System.out.println("I/O Error: " + ex.getMessage());
-
 		}
 
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName; 
+	void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public String getUserName() {
-		return this.userName; 
+	String getUserName() {
+		return this.userName;
 	}
 
 
-        
-        public static void run(String hName,int p){
-                System.out.println("LALA");
-		ChatClient client = new ChatClient(hName, p);
-		client.execute();
-        }
-        public WriteThread getWriteThread (){
-            return writeThread;
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
 	public static void main(String[] args) {
-                System.out.println("LALA");
+		//if (args.length < 2) return;
+                System.out.println("LALALAL");
 		String hostname = "192.168.1.16";
 		int port = 8080;
 

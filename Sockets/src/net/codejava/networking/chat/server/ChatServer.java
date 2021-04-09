@@ -14,7 +14,7 @@ public class ChatServer {
 	private int port;
 	private Set<String> userNames = new HashSet<>();
 	private Set<UserThread> userThreads = new HashSet<>();
-        
+
 	public ChatServer(int port) {
 		this.port = port;
 	}
@@ -42,17 +42,11 @@ public class ChatServer {
 
 	public static void main(String[] args) {
 		
-
 		int port = 8080;
 
 		ChatServer server = new ChatServer(port);
 		server.execute();
 	}
-        
-        public static void run(int p){
-            ChatServer server = new ChatServer(p);
-            server.execute();
-        }
 
 	/**
 	 * Delivers a message from one user to others (broadcasting)

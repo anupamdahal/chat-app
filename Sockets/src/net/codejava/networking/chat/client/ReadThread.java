@@ -1,10 +1,6 @@
 package net.codejava.networking.chat.client;
-
-import Sam.Controller;
-import Sam.Message;
 import java.io.*;
 import java.net.*;
-import java.util.ArrayList;
 
 /**
  * This thread is responsible for reading server's input and printing it
@@ -17,6 +13,7 @@ public class ReadThread extends Thread {
 	private BufferedReader reader;
 	private Socket socket;
 	private ChatClient client;
+
 	public ReadThread(Socket socket, ChatClient client) {
 		this.socket = socket;
 		this.client = client;
@@ -39,9 +36,6 @@ public class ReadThread extends Thread {
 				// prints the username after displaying the server's message
 				if (client.getUserName() != null) {
 					System.out.print("[" + client.getUserName() + "]: ");
-                                        Message m = new Message(client.getUserName(),response);
-                                        //Controller.getInstance().addMessage(m);
-                                       
 				}
 			} catch (IOException ex) {
 				System.out.println("Error reading from server: " + ex.getMessage());
@@ -50,5 +44,4 @@ public class ReadThread extends Thread {
 			}
 		}
 	}
-        
 }

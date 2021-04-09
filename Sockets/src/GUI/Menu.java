@@ -68,7 +68,7 @@ class Menu extends JFrame
         	 
         	 int port = 8080;
                  
-                 ChatClient.run("192.168.1.16",port);   
+                 ChatClient.run("localhost",port);   
         	 Chatbox chatbox=new Chatbox();
         	 chatbox.setVisible(true);
         	 setVisible(false);
@@ -86,7 +86,7 @@ class Menu extends JFrame
         	 chatbox.setVisible(true);
         	 setVisible(false);
                  ChatServer.run(port);  
-                 ChatClient.run("localhost",port);
+                 //ChatClient.run("localhost",port);
                  
          }
       }); 
