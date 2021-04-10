@@ -80,13 +80,7 @@ class Chatbox extends JFrame {
                    
                     showLabel(newMessage, textArea, textField, typingLabel);
                }
-                
-              
-                        
-                        
-                    
-                    
-                
+               Controller.get().clearMessages();
             }
         });
         newMessageLoop.start();
@@ -110,7 +104,7 @@ class Chatbox extends JFrame {
                 if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
                     String typed_message=textField.getText();
                     showLabel(typed_message, textArea, textField, typingLabel);
-                    
+                    Controller.get().sendMessages(typed_message);
                 }
             }
 

@@ -17,6 +17,7 @@ public class Controller {
     
     private ArrayList<String> recivedMessages;
     
+    ChatClient client;
     
     private Controller(){
         recivedMessages = new ArrayList<>();
@@ -27,18 +28,27 @@ public class Controller {
     
     
     public ArrayList<String> getMessages () {
-        ArrayList<String> temp = recivedMessages;
-        recivedMessages.clear();
-        return temp;
-    }
-    public void sendMessages(){
         
+        return recivedMessages;
+    }
+    public void clearMessages(){
+        recivedMessages = new ArrayList<>();
+    }
+    public void sendMessages(String message) {
+        client.write.sendMessages(message); 
     }
     public void addMessage(String m){
         recivedMessages.add(m);
     }
     
     public void connect(String ip,int port){
-        ChatClient.run(ip, port);
+        client = new ChatClient(ip, port);
     }
+    
+    public void setUserName(){
+        
+    }
+    public String getUserName(){
+       return ""; 
+    } 
 }

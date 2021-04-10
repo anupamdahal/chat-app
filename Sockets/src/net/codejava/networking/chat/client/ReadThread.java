@@ -36,7 +36,7 @@ public class ReadThread extends Thread {
 
 				// prints the username after displaying the server's message
 				if (client.getUserName() != null) {
-                                    String recivedMessage = "[" + client.getUserName() + "]: " + response;
+                                    String recivedMessage =  response;
                                     System.out.print(recivedMessage);
                                     Controller.get().addMessage(recivedMessage );
 				}
