@@ -41,8 +41,8 @@ public class Controller {
         recivedMessages.add(m);
     }
     
-    public void connect(String ip,int port){
-        client = new ChatClient(ip, port);
+    public void connect(String userName,String ip,int port){
+        client = new ChatClient(userName,ip, port);
     }
     
     public void setUserName(){

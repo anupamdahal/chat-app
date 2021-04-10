@@ -20,7 +20,7 @@ public class WriteThread extends Thread {
 
     private String text = "";
     private boolean sendMessage = false;
-
+    private String userName = "";
     public WriteThread(Socket socket, ChatClient client) {
         this.socket = socket;
         this.client = client;
@@ -36,30 +36,19 @@ public class WriteThread extends Thread {
 
     @Override
     public void run() {
-
-        //getting the user name
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.print("\nEnter your name: ");
-        String userName = "";
-        try {
-            userName = reader.readLine();
-        } catch (IOException ex) {
-            Logger.getLogger(WriteThread.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        //set the username on the client side
-        client.setUserName(userName);
-        //print it
-        writer.println(userName);
-
+        
 
        
     }
-
+    public void setUserName(String name){
+        userName = name; 
+    }
     public void sendMessages(String message) {
         text = message;
         sendMessage = true;
-        writer.println(text);
+        StringBuilder sb = new StringBuilder();
+        sb.append(userName).append(": ").append(text);
+        writer.println(sb.toString());
     }
     
     public void closeSocket(){

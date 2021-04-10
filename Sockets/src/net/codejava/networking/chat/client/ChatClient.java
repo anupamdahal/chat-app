@@ -16,10 +16,11 @@ public class ChatClient {
         static private ChatClient client;
         public WriteThread write;
         
-	public ChatClient(String hostname, int port) {
+	public ChatClient(String userName,String hostname, int port) {
 		this.hostname = hostname;
 		this.port = port;
                 client = this;
+                client.userName = userName;
                 execute();
 	}
 
@@ -31,7 +32,8 @@ public class ChatClient {
 
 			new ReadThread(socket, this).start();
 			write = new WriteThread(socket, this);
-                        write.start();
+                        write.setUserName(userName);
+                        write.start(); 
 		} catch (UnknownHostException ex) {
 			System.out.println("Server not found: " + ex.getMessage());
 		} catch (IOException ex) {
@@ -39,25 +41,11 @@ public class ChatClient {
 		}
 
 	}
+        public String getUserName(){
+            return userName;
+        }
 
-	void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	String getUserName() {
-		return this.userName;
-	}
-
-
-	public static void main(String[] args) {
-		//if (args.length < 2) return;
-                System.out.println("LALALAL");
-		String hostname = "192.168.1.16";
-		int port = 8080;
-
-		client = new ChatClient(hostname, port);
-		client.execute();
-	}
+	
     
         
 }
