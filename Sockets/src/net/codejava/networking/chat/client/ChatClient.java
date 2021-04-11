@@ -39,15 +39,18 @@ public class ChatClient {
 			write = new WriteThread(socket, this);
                         write.setUserName(userName);
                         write.start(); 
+                        error = "";
 		} catch (UnknownHostException ex) {
-                        error="true";                        
+                        error="Server not found: " + ex.getMessage();                        
 			System.out.println("Server not found: " + ex.getMessage());
                         
 		} catch (IOException ex) {
                         //Controller.get().connectionStatus(false);
+                        error="I/O Error: " + ex.getMessage();
 			System.out.println("I/O Error: " + ex.getMessage());
                         
 		}
+                
 
 	}
         public String getUserName(){

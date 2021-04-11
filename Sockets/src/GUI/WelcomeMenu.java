@@ -72,19 +72,9 @@ class WelcomeMenu extends JFrame {
         loginButton.setFont(font1);
         loginButton.setBackground(Color.WHITE);
         
-        //ipField
-        MaskFormatter mf;
-        try {
-            mf = new MaskFormatter("###.###.###.###");
-            mf.setPlaceholderCharacter('0');
-            ipField = new javax.swing.JFormattedTextField(mf);
-        } catch (Exception e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-            ipField = new JTextField(10);
-           
+            
+        ipField = new JTextField(15);           
 
-        }
 
         //when user clicks button
         loginButton.addActionListener(new ActionListener() {
@@ -92,10 +82,22 @@ class WelcomeMenu extends JFrame {
                 userName=usernameField.getText();
                 ipAddress = ipField.getText();
                 int port = 8080;
-                System.out.println(ipAddress);
+                System.out.println(ipAddress); 
                 Controller.get().connect(userName, ipAddress, port);    
+                
+                if(!Controller.get().getError().equals("")){
+                   JOptionPane.showMessageDialog(null, Controller.get().getError());                    
+                    
+                    return;
+                }
+                
                 Controller.get().sendMessages(userName);
-
+                
+                
+                
+                
+                
+                
                 Chatbox chatbox = new Chatbox();
                 chatbox.setVisible(true);
                 setVisible(false);
