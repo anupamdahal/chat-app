@@ -2,7 +2,7 @@ package GUI;
 
 import javax.swing.SwingUtilities;
 
-public class Main {
+public class ChatApp {
 
 	 public static void main(String args[])
 	    {
@@ -10,7 +10,7 @@ public class Main {
 	        SwingUtilities.invokeLater(new Runnable(){
 	            public void run()
 	            {
-	                new Menu();
+	                new WelcomeMenu();
 	            }
 	        });
 	    }

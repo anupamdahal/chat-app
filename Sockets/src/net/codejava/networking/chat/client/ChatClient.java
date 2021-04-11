@@ -1,10 +1,10 @@
 package net.codejava.networking.chat.client;
 import java.net.*;
 import java.io.*;
-
+import Controller.Controller;
 /**
  * This is the chat client program.
- * Type 'bye' to terminte the program.
+ * Type 'bye' to terminate the program.
  *
  * @author www.codejava.net
  */
@@ -16,7 +16,11 @@ public class ChatClient {
         static private ChatClient client;
         public WriteThread write;
         
-	public ChatClient(String userName,String hostname, int port) {
+        private String error="";
+
+
+        private boolean connected;
+	public ChatClient(String userName, String hostname, int port) {
 		this.hostname = hostname;
 		this.port = port;
                 client = this;
@@ -26,8 +30,9 @@ public class ChatClient {
 
 	public void execute() {
 		try {
+                    
 			Socket socket = new Socket(hostname, port);
-
+                        Controller.get().connectionStatus(true);
 			System.out.println("Connected to the chat server");
 
 			new ReadThread(socket, this).start();
@@ -35,14 +40,27 @@ public class ChatClient {
                         write.setUserName(userName);
                         write.start(); 
 		} catch (UnknownHostException ex) {
+                        error="true";                        
 			System.out.println("Server not found: " + ex.getMessage());
+                        
 		} catch (IOException ex) {
+                        //Controller.get().connectionStatus(false);
 			System.out.println("I/O Error: " + ex.getMessage());
+                        
 		}
 
 	}
         public String getUserName(){
             return userName;
+        }
+        public boolean getConnectionStatus(){            
+            return connected;
+            
+        }
+        //get error added
+       
+        public String getError(){
+            return error;
         }
 
 	

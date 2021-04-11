@@ -16,7 +16,9 @@ public class Controller {
     static private Controller me = new Controller();
     
     private ArrayList<String> recivedMessages;
-    
+    public String userName="";
+    private String error="";
+   
     ChatClient client;
     
     private Controller(){
@@ -41,14 +43,23 @@ public class Controller {
         recivedMessages.add(m);
     }
     
-    public void connect(String userName,String ip,int port){
-        client = new ChatClient(userName,ip, port);
+    public void connect(String userName, String ip,int port){
+        client = new ChatClient(userName, ip, port);
+        error = client.getError();
+        this.userName=userName;
+        
     }
-    
-    public void setUserName(){
+    public boolean connectionStatus(boolean status){
+        return status;
+    }
+    public void setClientUserName(String userName){
         
     }
     public String getUserName(){
-       return ""; 
+       //System.out.print("Username:"+userName);
+       return userName; 
     } 
+    public String getError(){
+        return error;
+    }
 }

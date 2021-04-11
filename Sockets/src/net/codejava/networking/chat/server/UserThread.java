@@ -1,5 +1,5 @@
 package net.codejava.networking.chat.server;
-
+import Controller.Controller;
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -28,11 +28,9 @@ public class UserThread extends Thread {
 			OutputStream output = socket.getOutputStream();
 			writer = new PrintWriter(output, true);
 
-			printUsers();
-
 			String userName = reader.readLine();
 			server.addUserName(userName);
-
+                        printUsers();
 			String serverMessage = "New user connected: " + userName;
 			server.broadcast(serverMessage, this);
 
@@ -40,7 +38,7 @@ public class UserThread extends Thread {
 
 			do {
 				clientMessage = reader.readLine();
-				serverMessage = "[" + userName + "]: " + clientMessage;
+				serverMessage = userName + " : " + clientMessage;
 				server.broadcast(serverMessage, this);
 
 			} while (!clientMessage.equals("bye"));

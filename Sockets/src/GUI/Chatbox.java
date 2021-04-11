@@ -10,36 +10,47 @@ import javax.swing.event.*;
 class Chatbox extends JFrame {
 
     boolean typing;
-
+    boolean errorPrinted = false;
     public Chatbox() {
         chatboxGUI();
     }
 
     private void chatboxGUI() {
+        
         JPanel panel;
         JTextField textField;
         JTextArea textArea;
         JLabel typingLabel;
+        
+        //custom colors
+        Color lightBlue=new Color(121,202,224);
+    	Color turquoise=new Color(0,83,98);
+    	Color darkBlue=new Color(70,130,180);
+        Color lightGrey=new Color(227,244,244);
 
         Timer timer;
         Timer newMessageLoop;
         Font font1;
+        
         //frame properties
-        font1 = new Font("Century Gothic", Font.LAYOUT_LEFT_TO_RIGHT, 40);
+        font1 = new Font("Arial", Font.LAYOUT_LEFT_TO_RIGHT, 35);
         setTitle("Chat Box");
-        setSize(800, 1000);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        pack();
+        setSize(screenSize.width-1000,screenSize.height-200);
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        //create a panel and set layout
+        //panel
         panel = new JPanel();
-        panel.setBackground(Color.LIGHT_GRAY);
+        panel.setBackground(darkBlue);
         panel.setLayout(new GridLayout(0, 1));
         add(panel, BorderLayout.SOUTH);
 
-        //create label for thinking/typing
+        //label for thinking/typing
         typingLabel = new JLabel();
+        typingLabel.setForeground(Color.WHITE);
         typingLabel.setFont(font1);
         panel.add(typingLabel);
 
@@ -61,19 +72,17 @@ class Chatbox extends JFrame {
         
         //jtextField for user input    
         textField = new JTextField();
-        textField.setBackground(Color.PINK);
+        textField.setBackground(lightGrey);
         textField.setFont(font1);
         panel.add(textField);
 
         //textArea for displaying chat
         textArea = new JTextArea();
-        textArea.setBackground(Color.CYAN);
+        textArea.setBackground(lightBlue);
         textArea.setFont(font1);
         //make it non-editable
-        textArea.setEditable(false);
-        
-        
-        
+        textArea.setEditable(false);       
+                
         newMessageLoop = new Timer(1, new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                for(String newMessage:Controller.get().getMessages()){
@@ -81,10 +90,11 @@ class Chatbox extends JFrame {
                     showLabel(newMessage, textArea, textField, typingLabel);
                }
                Controller.get().clearMessages();
+                //set to == false to make it clear in the picture
+               
             }
         });
         newMessageLoop.start();
-
        
         // Add a KeyListener
         textField.addKeyListener(new KeyAdapter() {
@@ -125,9 +135,6 @@ class Chatbox extends JFrame {
             }
         });
 
-        // Set some margin, for the text
-        //ta.setMargin(new Insets(0,0,0,0));
-        // Set a scrollpane
         JScrollPane js = new JScrollPane(textArea);
         add(js);
 

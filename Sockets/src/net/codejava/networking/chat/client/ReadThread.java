@@ -38,7 +38,7 @@ public class ReadThread extends Thread {
 				if (client.getUserName() != null) {
                                     String recivedMessage =  response;
                                     System.out.print(recivedMessage);
-                                    Controller.get().addMessage(recivedMessage );
+                                    Controller.get().addMessage(recivedMessage);
 				}
 			} catch (IOException ex) {
 				System.out.println("Error reading from server: " + ex.getMessage());

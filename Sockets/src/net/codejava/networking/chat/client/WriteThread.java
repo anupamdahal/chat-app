@@ -20,14 +20,14 @@ public class WriteThread extends Thread {
 
     private String text = "";
     private boolean sendMessage = false;
-    private String userName = "";
+    private String userName="";
     public WriteThread(Socket socket, ChatClient client) {
         this.socket = socket;
         this.client = client;
 
         try {
             OutputStream output = socket.getOutputStream();
-            writer = new PrintWriter(output, true);
+            writer = new PrintWriter(output, true);           
         } catch (IOException ex) {
             System.out.println("Error getting output stream: " + ex.getMessage());
             ex.printStackTrace();
@@ -47,7 +47,7 @@ public class WriteThread extends Thread {
         text = message;
         sendMessage = true;
         StringBuilder sb = new StringBuilder();
-        sb.append(userName).append(": ").append(text);
+        sb.append(text);
         writer.println(sb.toString());
     }
     
